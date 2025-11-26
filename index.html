@@ -1,149 +1,28 @@
 <!DOCTYPE html>
-<html lang="ro">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vacanța de Paști</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(to bottom right, #e0f7fa, #b2ebf2);
-            color: #333;
-        }
-        h1 {
-            text-align: center;
-            font-family: 'Playfair Display', serif;
-            color: #004d40;
-            margin: 40px 0;
-            font-size: 2.5em;
-        }
-        .image-container {
-            display: flex;
-            justify-content: space-around;
-            margin: 0 auto;
-            max-width: 1200px;
-            padding: 20px;
-        }
-        .image {
-            width: 30%;
-            border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .image:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-        }
-        .left {
-            border: 5px solid #00acc1;
-        }
-        .center {
-            border: 5px solid #ffca28;
-        }
-        .right {
-            border: 5px solid #e57373;
-        }
-        .essay {
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            margin: 40px auto;
-            max-width: 800px;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 1s ease forwards;
-        }
-        .essay h2 {
-            font-family: 'Playfair Display', serif;
-            color: #004d40;
-            margin-bottom: 20px;
-            font-size: 1.8em;
-        }
-        .essay p {
-            line-height: 1.8;
-            margin-bottom: 15px;
-        }
-        .video {
-            margin: 40px auto;
-            display: block;
-            max-width: 700px;
-            border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-        .link {
-            text-align: center;
-            margin: 40px 0;
-        }
-        .link a {
-            display: inline-block;
-            padding: 15px 30px;
-            background-color: #004d40;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-        .link a:hover {
-            background-color: #00251a;
-            transform: scale(1.05);
-        }
-        /* Анимация для текста */
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        /* Адаптивность */
-        @media (max-width: 768px) {
-            .image-container {
-                flex-direction: column;
-                align-items: center;
-            }
-            .image {
-                width: 80%;
-                margin-bottom: 20px;
-            }
-            .video {
-                width: 100%;
-            }
-        }
-    </style>
+    <title>Программирование NFC метки</title>
 </head>
 <body>
-    <h1>Unde aș dori să-mi petrec vacanța de Paști</h1>
-    <div class="image-container">
-        <img src="https://ht.kz/fls/upload/5315ca9e6c1fc428ac5877771222438e.jpg" alt="Destinație 1" class="image left">
-        <img src="https://teztour.com.md/static/photos/pages/1170/88/889/4151479775a27ec4886c71.jpg" alt="Destinație 2" class="image center">
-        <img src="https://s0.rbk.ru/v6_top_pics/resized/600xH/media/img/7/52/347277761047527.webp" alt="Destinație 3" class="image right">
-    </div>
-    <div class="essay">
-        <h2>Tradițiile sărbătorilor de Paști</h2>
-        <p>
-            Sărbătoarea Paștelui este una dintre cele mai importante sărbători creștine, care comemorează învierea lui Iisus Hristos. Tradițiile de Paști variază în funcție de regiune și cultură, dar multe dintre ele sunt comune în întreaga lume.
-        </p>
-        <p>
-            Una dintre cele mai cunoscute tradiții este vopsirea ouălor. Ouăle roșii simbolizează sângele lui Hristos și sunt un simbol al vieții noi. În multe țări, ouăle sunt decorate cu modele elaborate și sunt oferite ca daruri.
-        </p>
-        <p>
-            O altă tradiție importantă este participarea la slujba de Înviere, care are loc în noaptea de Paști. Credincioșii se adună în biserici pentru a celebra învierea lui Hristos și pentru a primi lumina sfântă.
-        </p>
-        <p>
-            Mâncarea tradițională de Paști include mielul, care simbolizează sacrificiul lui Hristos, precum și alte preparate specifice fiecărei culturi, cum ar fi pasca și cozonacul în România.
-        </p>
-    </div>
-    <div class="video">
-        <div class="embed-container">
-            <iframe src="video.mp4" frameborder="0" allowfullscreen></iframe>
-        </div>
-    </div>
-    <div class="link">
-        <a href="https://ziuadeazi.md/articles/interactiv/poezii-de-paste/" target="_blank">Vizitați site-ul cu poezii de Paști</a>
-    </div>
+    <h1>Программирование NFC метки</h1>
+    <button id="writeButton">Записать в NFC</button>
+
+    <script>
+        if ('NFC' in navigator) {
+            document.getElementById('writeButton').addEventListener('click', async () => {
+                try {
+                    const ndef = new NDEFWriter();
+                    await ndef.write('Привет, NFC!');
+                    alert('NFC метка записана!');
+                } catch (error) {
+                    alert('Ошибка записи в NFC метку: ' + error);
+                }
+            });
+        } else {
+            alert('NFC не поддерживается на этом устройстве или в этом браузере.');
+        }
+    </script>
 </body>
 </html>
