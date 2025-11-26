@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Программирование NFC метки</title>
+    <title>Записать в NFC метку</title>
 </head>
 <body>
     <h1>Программирование NFC метки</h1>
@@ -15,14 +15,15 @@
                 try {
                     const ndef = new NDEFWriter();
                     await ndef.write('Привет, NFC!');
-                    alert('NFC метка записана!');
+                    alert('Данные записаны на NFC метку!');
                 } catch (error) {
-                    alert('Ошибка записи в NFC метку: ' + error);
+                    alert('Ошибка записи в NFC: ' + error);
                 }
             });
         } else {
-            alert('NFC не поддерживается на этом устройстве или в этом браузере.');
+            alert('Ваш браузер или устройство не поддерживает Web NFC API.');
         }
     </script>
 </body>
 </html>
+
